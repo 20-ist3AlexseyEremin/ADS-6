@@ -2,35 +2,30 @@
 #ifndef INCLUDE_BST_H_
 #define INCLUDE_BST_H_
 template<typename T>
-class BST
-{
-public:
-    struct Node
-    {
+class BST {
+ public:
+    struct Node {
         T value;
         int count;
         Node* left;
         Node* right;
     };
-private:
+ private:
     Node* root;
     Node* addNode(Node*, T);
     int   searchNode(Node*, T);
     int   depthTree(Node*);
-public:
+ public:
     BST();
     ~BST();
     void add(T);
     int  search(T);
     int depth();
-    
 };
 template<typename T>
 BST<T>::BST() :root(nullptr) {}
-
 template<typename T>
-BST<T>::~BST()
-{
+BST<T>::~BST(){
 }
 template<typename T>
 typename BST<T>::Node* BST<T>::addNode(Node* root, T value) {
@@ -39,23 +34,18 @@ typename BST<T>::Node* BST<T>::addNode(Node* root, T value) {
         root->value = value;
         root->count = 1;
         root->left = root->right = nullptr;
-    }
-    else if (root->value > value) {
+    } else if (root->value > value) {
         root->left = addNode(root->left, value);
-    }
-    else if (root->value < value) {
+    } else if (root->value < value) {
         root->right = addNode(root->right, value);
-    }
-    else
+    } else
         root->count++;
     return root;
 }
-
 template<typename T>
 void BST<T>::add(T value) {
     root = addNode(root, value);
 }
-
 template<typename T>
 int BST<T>::searchNode(Node* root, T value)
 {
@@ -70,8 +60,7 @@ int BST<T>::searchNode(Node* root, T value)
 }
 
 template<typename T>
-int BST<T>::search(T value)
-{
+int BST<T>::search(T value) {
     return searchNode(root, value);
 }
 template<typename T>
