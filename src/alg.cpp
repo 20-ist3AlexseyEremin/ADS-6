@@ -17,11 +17,11 @@ BST<std::string> makeTree(const char* filename) {
                 while (!file.eof()) {
         char sym = file.get();
         if (((sym >= 'a') && (sym <= 'z')) || ((sym >= 'A') && (sym <= 'Z'))) {
-        if ((sym >= 'A') && (sym <= 'Z'))
+        if ((sym >= 'A') && (sym <= 'Z')) {
                 sym += diff;
-                str += sym;
         }
-        else if (str != "") {
+                str += sym;
+        } else if (str != "") {
                 tree.add(str);
                 str = "";
         }
